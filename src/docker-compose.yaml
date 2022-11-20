@@ -1,0 +1,19 @@
+# Docker-compose
+# for
+# SQLite3 dockerfile
+version: "3.5"
+services:
+    sqlite:
+        image: sqlite:alpine
+        container_name: sqlite3
+        user: "1000:1000"
+        build: .
+        restart: unless-stopped
+        volumes:
+           # [host-system-volume]:[container-volume]:[permissions]
+           - "$PWD/db:/db:z"
+        command: ""
+        # Corresponds to '-i'
+        # stdin_open: true
+        # Corresponds to '-t'
+        tty: true
